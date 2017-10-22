@@ -144,7 +144,7 @@ def main():
     else:
         print("day")
         for light in lights:
-            setTemperature(api, light, temperature)
+            hintTemperature(api, light, temperature)
             hintDimmer(api, light, 255) 
 
 main()
