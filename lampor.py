@@ -74,8 +74,15 @@ def getTemperature(time, sunrise, sunset):
 
 
 def setTemperature(api, light, temperature):
-    print(light.name, temperature, 'K')
+    print(light.name, temperature, 'K set')
     api(light.light_control.set_kelvin_color(temperature))
+
+def hintTemperature(api, light, temperature):
+    # only set the temperature if the requested is warmer than the current
+    if light.light_control.lights[0].kelvin_color > temperature:
+        print(light.name, temperature, 'K hint')
+        api(light.light_control.set_kelvin_color(temperature))
+
 
 def hintDimmer(api, light, dimmer):
     # only actually set the dimmer if the requested value is < the current actual value
